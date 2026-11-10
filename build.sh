@@ -16,10 +16,14 @@ rm -rf "$BUILD"
 mkdir -p "$APP"
 
 echo "[*] compiling..."
+linker_args=()
+if command -v ld.lld >/dev/null 2>&1; then
+    linker_args+=("-fuse-ld=lld")
+fi
 clang \
     -target arm64-apple-ios14.0 \
     -isysroot "$SDK" \
-    -fuse-ld=lld \
+    "${linker_args[@]}" \
     -fobjc-arc -fblocks -O2 \
     -Wall -Wno-unused-parameter -Wno-deprecated-declarations \
     -framework UIKit \
