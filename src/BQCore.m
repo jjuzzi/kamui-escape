@@ -14,6 +14,7 @@
 #import <stdlib.h>
 #import <objc/message.h>
 #import <WebKit/WebKit.h>
+#import <xpc/xpc.h>
 
 NSString * const BQErrorDomain = @"BQErrorDomain";
 
@@ -148,7 +149,6 @@ dispatch_queue_t BQWorkQueue(void) {
 }
 
 // --------------------------------------------------------------- MCM API ---
-typedef void *xpc_object_t;
 typedef xpc_object_t (*xpc_string_create_fn)(const char *);
 typedef void (*xpc_release_fn)(xpc_object_t);
 typedef void *(*fn_create)(void);
