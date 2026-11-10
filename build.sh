@@ -23,7 +23,7 @@ fi
 clang \
     -target arm64-apple-ios14.0 \
     -isysroot "$SDK" \
-    "${linker_args[@]}" \
+    "${linker_args[@]-}" \
     -fobjc-arc -fblocks -O2 \
     -Wall -Wno-unused-parameter -Wno-deprecated-declarations \
     -framework UIKit \
